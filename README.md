@@ -5,7 +5,7 @@ A modern mobile application designed to help users connect, share, and manage th
 ## ✨ Features
 
 - **User Profile Management** - Create and customize your personal profile
-- **Interactive Feed** - Browse through dynamic content
+- **Interactive Feed** - Browse through static content(for now)
 - **Date Picker** - Easy date selection with smooth UI
 - **Detailed Descriptions** - Comprehensive information display
 - **Responsive Design** - Beautiful interface across all screens
