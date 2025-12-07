@@ -1,46 +1,74 @@
-# Intro Application 📱
+# TaskApp 📱 - React Native Task Management Application
 
-A modern mobile application designed to help users connect, share, and manage their profiles with an intuitive interface.
+A modern React Native task management application built with Expo, featuring intuitive UI, profile management, and task organization.
+
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-flat&logo=react&logoColor=61DAFB)
+![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-flat&logo=expo&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-flat&logo=typescript&logoColor=white)
+![React Navigation](https://img.shields.io/badge/React_Navigation-6C3483?style=for-the-flat&logo=react&logoColor=white)
 
 ## ✨ Features
 
-- **User Profile Management** - Create and customize your personal profile
-- **Interactive Feed** - Browse through static content(for now)
-- **Date Picker** - Easy date selection with smooth UI
-- **Detailed Descriptions** - Comprehensive information display
-- **Responsive Design** - Beautiful interface across all screens
+- **📋 Task Management** - Create, organize, and track tasks
+- **👤 User Profiles** - Personalized user profiles and settings
+- **🔍 Explore Feed** - Browse tasks and activities
+- **📅 Date Picker** - Intuitive date selection for task scheduling
+- **🎨 Themed UI** - Beautiful dark/light mode support
+- **📱 Cross-Platform** - Works on iOS, Android, and Web
+- **🔄 Async Storage** - Local data persistence
+- **🎯 Gesture Support** - Smooth gesture-based interactions
+- **⚡ Reanimated Animations** - High-performance animations
 
-## 📸 Application Screenshots
+## 📸 Screenshots
 
 ### User Profile Screen
-![User Profile Screen](https://github.com/ravine27/intro-application/raw/7ad7b082d7795581fe5c61e7f03e3cb527aa71c2/img/user_profile.jpg)
+<p align="center">
+  <img src="./img/user_profile.jpg" alt="User Profile Screen" width="300">
+  <br>
+  <em>Personalized user profile interface</em>
+</p>
 
-### Feed Screen
-Browse through the latest updates and content
-![Feed Screen](https://github.com/ravine27/intro-application/raw/7ad7b082d7795581fe5c61e7f03e3cb527aa71c2/img/feed_screen.jpg)
+### Task Feed Screen
+<p align="center">
+  <img src="./img/feed_screen.jpg" alt="Feed Screen" width="300">
+  <br>
+  <em>Browse and manage your tasks feed</em>
+</p>
 
 ### Description Screen
-Detailed information and descriptions
-![Description Screen](https://github.com/ravine27/intro-application/raw/7ad7b082d7795581fe5c61e7f03e3cb527aa71c2/img/discription_screen.jpg)
+<p align="center">
+  <img src="./img/discription_screen.jpg" alt="Description Screen" width="300">
+  <br>
+  <em>Detailed task descriptions and information</em>
+</p>
 
-### Date Picker
-Easy and intuitive date selection
-![Date Picker Screen](https://github.com/ravine27/intro-application/raw/7ad7b082d7795581fe5c61e7f03e3cb527aa71c2/img/datePiker_screen.jpg)
+### Date Picker Interface
+<p align="center">
+  <img src="./img/datePiker_screen.jpg" alt="Date Picker Screen" width="300">
+  <br>
+  <em>Easy date selection for task scheduling</em>
+</p>
 
-### Blank Profile
-Initial profile setup screen
-![Blank Profile Screen](https://github.com/ravine27/intro-application/raw/7ad7b082d7795581fe5c61e7f03e3cb527aa71c2/img/blank_profile.jpg)
+### Profile Setup
+<p align="center">
+  <img src="./img/blank_profile.jpg" alt="Blank Profile Screen" width="300">
+  <br>
+  <em>Initial profile setup and configuration</em>
+</p>
 
-## 🚀 Quick Start
+## 🚀 Getting Started
 
 ### Prerequisites
-- Flutter SDK
-- React Navtive expo
-- Android Studio / VS Code
-- Android Emulator or Physical Device
+
+- Node.js (v18 or newer)
+- npm or yarn
+- Expo CLI
+- Android Studio / Xcode (for native builds)
+- Expo Go app (for testing on physical devices)
 
 ### Installation
-1. Clone the repository
-```bash
-git clone https://github.com/ravine27/intro-application.git
-cd intro-application
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ravine27/taskapp.git
+   cd taskapp
