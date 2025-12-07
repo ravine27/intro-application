@@ -16,6 +16,19 @@ const CARD_HORIZONTAL_PADDING = 16;
 const CARD_WIDTH = width - CARD_HORIZONTAL_PADDING * 2;
 const CONTENT_IMAGE_HEIGHT = 200;
 
+// Color Theme
+const COLORS = {
+  lightCream: '#EBE8DB',
+  pink: '#D76C82',
+  darkPink: '#B03052',
+  darkRed: '#3D0301',
+  darkText: '#2D2D2D',
+  grayText: '#666666',
+  lightGray: '#E0E0E0',
+  white: '#FFFFFF',
+  black: '#000000',
+};
+
 // use the uploaded file as avatar (tooling will convert the local path to a URL)
 const UPLOADED_AVATAR = "/mnt/data/803e6de6-6c3f-4aac-9353-e76eb0650c13.png";
 
@@ -88,9 +101,25 @@ const posts = [
 ];
 
 export default function FeedScreen() {
-  const [data] = useState(posts);
+  const [data, setData] = useState(posts);
+  const [likedPosts, setLikedPosts] = useState<Set<string>>(new Set());
+
+  const toggleLike = (postId: string) => {
+    const newLikedPosts = new Set(likedPosts);
+    if (newLikedPosts.has(postId)) {
+      newLikedPosts.delete(postId);
+    } else {
+      newLikedPosts.add(postId);
+    }
+    setLikedPosts(newLikedPosts);
+  };
 
   const renderPost = ({ item }: { item: typeof posts[0] }) => {
+    const isLiked = likedPosts.has(item.id);
+    // Convert likes to number for calculations
+    const likesCount = parseInt(item.likes as any);
+    const displayLikes = isLiked ? likesCount + 1 : likesCount;
+    
     return (
       <View style={styles.card}>
         {/* header */}
@@ -120,18 +149,27 @@ export default function FeedScreen() {
 
         {/* actions row */}
         <View style={styles.actionsRow}>
-          <TouchableOpacity style={styles.actionBtn}>
-            <FontAwesome name="heart-o" size={18} color="#ff6b35" />
-            <Text style={styles.actionText}> {item.likes}</Text>
+          <TouchableOpacity 
+            style={styles.actionBtn}
+            onPress={() => toggleLike(item.id)}
+          >
+            <FontAwesome 
+              name={isLiked ? "heart" : "heart-o"} 
+              size={18} 
+              color={isLiked ? COLORS.darkPink : COLORS.pink} 
+            />
+            <Text style={[styles.actionText, isLiked && styles.likedText]}>
+              {displayLikes}
+            </Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.actionBtn}>
-            <FontAwesome name="comment-o" size={18} color="#6b7280" />
+            <FontAwesome name="comment-o" size={18} color={COLORS.grayText} />
             <Text style={styles.actionText}> {item.comments}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.actionBtn}>
-            <FontAwesome name="share" size={18} color="#6b7280" />
+            <FontAwesome name="share" size={18} color={COLORS.grayText} />
             <Text style={styles.actionText}> {item.shares}</Text>
           </TouchableOpacity>
 
@@ -151,10 +189,13 @@ export default function FeedScreen() {
         renderItem={renderPost}
         contentContainerStyle={styles.listContent}
         showsVerticalScrollIndicator={false}
-        // simple pull-to-refresh setup (optional)
         refreshing={false}
         onRefresh={() => {
-          /* connect to refresh logic */
+          // Simulate refresh
+          setTimeout(() => {
+            setData([...posts]);
+            setLikedPosts(new Set());
+          }, 1000);
         }}
       />
     </SafeAreaView>
@@ -162,36 +203,47 @@ export default function FeedScreen() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: "#f3f4f6" },
-  listContent: { padding: CARD_HORIZONTAL_PADDING, paddingBottom: 30 },
+  screen: { 
+    flex: 1, 
+    backgroundColor: COLORS.lightCream 
+  },
+  listContent: { 
+    padding: CARD_HORIZONTAL_PADDING, 
+    paddingBottom: 30 
+  },
 
   // CARD
   card: {
     width: CARD_WIDTH,
-    backgroundColor: "#ffffff",
-    borderRadius: 12,
-    marginBottom: 16,
+    backgroundColor: COLORS.white,
+    borderRadius: 16,
+    marginBottom: 20,
     overflow: "hidden",
     // subtle shadow
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.06,
-    shadowRadius: 8,
-    elevation: 3,
+    shadowColor: COLORS.darkRed,
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 4,
+    borderWidth: 1,
+    borderColor: `${COLORS.pink}15`,
   },
 
   headerRow: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 12,
+    padding: 16,
+    backgroundColor: `${COLORS.pink}05`,
   },
 
   avatar: {
     width: 44,
     height: 44,
     borderRadius: 22,
-    marginRight: 10,
-    backgroundColor: "#e5e7eb",
+    marginRight: 12,
+    backgroundColor: `${COLORS.pink}20`,
+    borderWidth: 2,
+    borderColor: COLORS.pink,
   },
 
   headerText: {
@@ -203,68 +255,85 @@ const styles = StyleSheet.create({
 
   author: {
     fontWeight: "700",
-    color: "#0b1226",
+    color: COLORS.darkRed,
     fontSize: 15,
   },
 
   time: {
-    color: "#6b7280",
+    color: COLORS.darkPink,
     fontSize: 12,
     marginLeft: 8,
+    fontWeight: '600',
   },
 
   contentImage: {
     width: "100%",
     height: CONTENT_IMAGE_HEIGHT,
-    backgroundColor: "#e6edf3",
+    backgroundColor: `${COLORS.pink}10`,
   },
 
   contentBlock: {
-    paddingHorizontal: 12,
-    paddingTop: 12,
-    paddingBottom: 10,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 14,
+    backgroundColor: COLORS.white,
   },
 
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "800",
-    color: "#0b1226",
-    marginBottom: 6,
+    color: COLORS.darkRed,
+    marginBottom: 8,
+    lineHeight: 24,
   },
 
   summary: {
-    fontSize: 14,
-    color: "#374151",
-    lineHeight: 20,
+    fontSize: 15,
+    color: COLORS.darkText,
+    lineHeight: 22,
+    opacity: 0.9,
   },
 
   divider: {
     height: 1,
-    backgroundColor: "#eef2f7",
-    marginHorizontal: 12,
+    backgroundColor: `${COLORS.pink}20`,
+    marginHorizontal: 16,
   },
 
   actionsRow: {
     flexDirection: "row",
     alignItems: "center",
-    padding: 10,
-    paddingHorizontal: 12,
+    padding: 12,
+    paddingHorizontal: 16,
+    backgroundColor: `${COLORS.lightCream}80`,
   },
 
   actionBtn: {
     flexDirection: "row",
     alignItems: "center",
-    marginRight: 18,
+    marginRight: 20,
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    backgroundColor: 'transparent',
   },
 
   actionText: {
-    color: "#374151",
+    color: COLORS.darkText,
     marginLeft: 6,
     fontWeight: "600",
+    fontSize: 14,
+  },
+
+  likedText: {
+    color: COLORS.darkPink,
+    fontWeight: '700',
   },
 
   smallTime: {
-    color: "#9ca3af",
+    color: COLORS.darkPink,
     fontSize: 12,
+    fontWeight: '600',
+    opacity: 0.8,
   },
 });
