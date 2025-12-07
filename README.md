@@ -35,6 +35,7 @@ Initial profile setup screen
 
 ### Prerequisites
 - Flutter SDK
+- React Navtive expo
 - Android Studio / VS Code
 - Android Emulator or Physical Device
 
