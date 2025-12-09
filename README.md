@@ -9,15 +9,15 @@ A modern React Native task management application built with Expo, featuring int
 
 ## ✨ Features
 
-- **📋 Task Management** - Create, organize, and track tasks
-- **👤 User Profiles** - Personalized user profiles and settings
-- **🔍 Explore Feed** - Browse tasks and activities
-- **📅 Date Picker** - Intuitive date selection for task scheduling
-- **🎨 Themed UI** - Beautiful dark/light mode support
-- **📱 Cross-Platform** - Works on iOS, Android, and Web
-- **🔄 Async Storage** - Local data persistence
-- **🎯 Gesture Support** - Smooth gesture-based interactions
-- **⚡ Reanimated Animations** - High-performance animations
+- **Task Management** - Create, organize, and track tasks
+- **User Profiles** - Personalized user profiles and settings
+- **Explore Feed** - Browse tasks and activities
+- **Date Picker** - Intuitive date selection for task scheduling
+- **Themed UI** - Beautiful dark/light mode support
+- **Cross-Platform** - Works on iOS, Android, and Web
+- **Async Storage** - Local data persistence
+- **Gesture Support** - Smooth gesture-based interactions
+- **Reanimated Animations** - High-performance animations
 
 ## 📸 Screenshots
 
