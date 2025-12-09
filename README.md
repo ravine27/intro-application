@@ -1,3 +1,4 @@
+
 # TaskApp  - React Native Task Management Application
 
 A modern React Native task management application built with Expo, featuring intuitive UI, profile management, and task organization.
